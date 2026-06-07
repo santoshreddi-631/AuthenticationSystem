@@ -1,0 +1,35 @@
+.signup-page{
+    position: relative;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.hero-image{
+    position: absolute;
+    inset: 0;
+
+    width: 60%;
+    height: 60%;
+
+    object-fit: contain;
+    z-index: 0; 
+    top: 30%;
+    left: 35%;
+}
+
+.signup-card{
+    position: relative;
+    z-index: 1;
+    width: 400px;
+    padding: 20px;
+    background: rgba(255,255,255);
+    border-radius: 15px;
+    top: 110px;
+}
+.form-field{
+    box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.779) ;
+}

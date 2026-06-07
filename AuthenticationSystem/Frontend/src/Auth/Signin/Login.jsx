@@ -1,0 +1,53 @@
+import { Form, Button } from 'react-bootstrap';
+import { useState } from 'react';
+import axiosClient from '../../Utils/axiosClient';
+import "./auth.css"
+function Login() {
+    const [userDetails , setUserDetails] = useState({
+        email:"",
+        password:""
+    })
+
+    function updateFieldData(e){
+        setUserDetails(prev =>({
+            ...prev , 
+            [e.target.name]:e.target.value
+        }))
+    }
+    async function userSubmitDetails(){
+        try{
+
+            let responce = await axiosClient.post('/login',userDetails);
+            console.log(responce);
+            if(responce.status === 200){
+                alert("User loged in succesfully");
+            }
+        }catch(ex){
+            alert("Invalid email or password");
+        }
+
+    }
+    return (
+        <div className="container-fluid signup-page">
+            <img src="/female.jpg" alt="hero" className="hero-image" />
+            <div className="signup-card">
+                <Form>
+                    <h1 style={{textAlign:'center'}}>Sign In</h1>
+                    <Form.Group className="mb-3">
+                        <Form.Control type="email" placeholder="Enter your Email" className="form-field" value={userDetails.email}  name="email" onChange={updateFieldData}/>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Control type="password" placeholder="Enter your Password" className="form-field" value={userDetails.password} name="password" onChange={updateFieldData}/>
+                    </Form.Group>
+                    <Button className="mb-3" variant="primary" type="button" className="w-100" onClick={()=>userSubmitDetails()}>
+                        Sign In
+                    </Button>
+                </Form>
+                <p>
+                    Dont have an Account? <a href="Register.jsx"><span style={{textDecoration:'underline'}}>Signup</span></a>
+                </p>
+            </div>
+        </div>
+    );
+}
+export default Login;
