@@ -1,5 +1,6 @@
 import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axiosClient from '../../Utils/axiosClient';
 import "./Register.css"
 function Register() {
@@ -40,7 +41,7 @@ function Register() {
                     </Button>
                 </Form>
                 <p>
-                    Already Registered? <a href=""><span style={{textDecoration:'underline'}}>Signin</span></a>
+                    Already Registered? <Link to="/login"><span style={{textDecoration:'underline'}}>Signin</span></Link>
                 </p>
             </div>
         </div>
