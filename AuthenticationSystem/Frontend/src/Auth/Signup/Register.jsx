@@ -19,6 +19,11 @@ function Register() {
     async function userSubmitDetails(){
         let responce = await axiosClient.post('/register',userDetails);
         console.log(responce);
+        if(responce.status === 200){
+            alert("User Registered Successfully");
+        }else{
+            alert("Something went wrong Please try again");
+        }
 
     }
     return (
